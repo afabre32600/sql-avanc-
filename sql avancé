@@ -1,0 +1,41 @@
+SELECT name, COUNT(wizard_id) as nombre from player
+JOIN team
+ON player.team_id=team.id
+GROUP BY name
+ORDER BY nombre DESC;
++------------+--------+
+| name       | nombre |
++------------+--------+
+| Gryffindor |     36 |
+| Slytherin  |     21 |
+| Ravenclaw  |     15 |
+| Hufflepuff |     12 |
++------------+--------+
+4 rows in set (0.00 sec)
+
+select name, count(wizard_id) as nombre from player
+join team on player.team_id = team.id
+group by name
+having nombre >= 14 ;
+
++------------+--------+
+| name       | nombre |
++------------+--------+
+| Gryffindor |     36 |
+| Slytherin  |     21 |
+| Ravenclaw  |     15 |
++------------+--------+
+3 rows in set (0.00 sec)
+
+SELECT firstname, lastname, enrollment_date, DAYOFWEEK(enrollment_date) AS jour from player
+JOIN wizard 
+ON player.id = wizard.id 
+HAVING jour=2 
+ORDER BY enrollment_date;
++-----------+----------+-----------------+------+
+| firstname | lastname | enrollment_date | jour |
++-----------+----------+-----------------+------+
+| severus   | rogue    | 1992-01-27      |    2 |
+| fred      | weasley  | 1994-01-10      |    2 |
+| harry     | potter   | 1995-10-09      |    2 |
++-----------+----------+-----------------+------+                
